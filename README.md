@@ -113,10 +113,11 @@ $  pip install -r requirements.txt
 ```python
 ALLOWED_HOSTS = ['*']
 ```
+
 Run to migrate database
 ```python
 $ python manage.py makemigrations
-$ python manage.py makemigrations
+$ python manage.py migrate
 ```
 
 **6. Now Run Server**
