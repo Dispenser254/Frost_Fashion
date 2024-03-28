@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+{%  block content %}
+<style>
+    .banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #ffb503;
+    }
+
+    .banner-text h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+    .banner-text p {
+        font-size: 18px;
+    }
+</style>
+<!-- ========================= SECTION MAIN ========================= -->
+<section class="section-intro padding-y-sm">
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="intro-banner-wrap shadow">
+                <img src="{% static 'images/banners/banner-3.jpg' %}" class="img-fluid rounded" alt="Welcome Banner">
+                <div class="banner-text">
+                    <h1>Welcome to Our Site</h1>
+                    <p>We are delighted to have you here. Explore our collection and enjoy your shopping experience!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> <!-- container //  -->
+</section>
+<!-- ========================= SECTION MAIN END// ========================= -->
+
+<!-- ========================= SECTION  ========================= -->
+<section class="section-name padding-y-sm">
+<div class="container">
+
+<header class="section-heading">
+	<a href="{% url 'store' %}" class="btn btn-outline-primary float-right">See all</a>
+	<h3 class="section-title">Popular products</h3>
+</header><!-- sect-heading -->
+
+	
+<div class="row">
+    {% for item in products %}
+    <div class="col-md-3">
+        <div class="card h-75 d-flex flex-column justify-content-center shadow">
+            <a href="{{ item.get_url }}" class="img-wrap rounded">
+                <img src="{{ item.images.url }}" class="card-img-top" alt="{{ item.product_name }}">
+            </a>
+            <div class="card-body text-center rounded" style="background-color: rgb(255, 246, 209);">
+                <h5 class="card-title"><a href="{{ item.get_url }}">{{ item.product_name }}</a></h5>
+                <p class="card-text">Kshs. {{ item.price }}</p>
+                <a href="{{ item.get_url }}" class="btn btn-primary btn-sm rounded-pill">Add to Cart</a>
+            </div>                 
+        </div>
+    </div> <!-- col.// -->
+    {% endfor %}
+</div> <!-- row.// -->
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="intro-banner-wrap shadow">
+            <img src="{% static 'images/categories/category-1.jpg' %}" class="img-fluid rounded" alt="Welcome Banner">
+            <div class="banner-text">
+                <h1>New Deals Available</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+        <div class="col-md-6">
+            <div class="intro-banner-wrap shadow">
+                <img src="{% static 'images/categories/category-2.jpg' %}" class="img-fluid rounded" alt="Welcome Banner">
+                <div class="banner-text">
+                    {% comment %} <h1>Welcome to Our Site</h1>
+                    <p>We are delighted to have you here. Explore our collection and enjoy your shopping experience!</p> {% endcomment %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="intro-banner-wrap shadow">
+                <img src="{% static 'images/categories/category-3.jpg' %}" class="img-fluid rounded" alt="Welcome Banner">
+                <div class="banner-text">
+                    {% comment %} <h1>Welcome to Our Site</h1>
+                    <p>We are delighted to have you here. Explore our collection and enjoy your shopping experience!</p> {% endcomment %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 mt-4">
+            <div class="intro-banner-wrap">
+                <img src="{% static 'images/banners/banner-3.jpg' %}" class="img-fluid rounded" alt="Welcome Banner">
+                <div class="banner-text">
+                    {% comment %} <h1>Welcome to Our Site</h1>
+                    <p>We are delighted to have you here. Explore our collection and enjoy your shopping experience!</p> {% endcomment %}
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+</div><!-- container // -->
+</section>
+<!-- ========================= SECTION  END// ========================= -->
+
+
+
+
+</body>
+</html>
+
+{% endblock %}
