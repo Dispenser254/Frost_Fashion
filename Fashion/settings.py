@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-t*i*x4&ez$&!&u_xsnz9u&y3ql4$oex+3_bg-^ihgxz+f-z3@h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -91,10 +91,22 @@ WSGI_APPLICATION = 'Fashion.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'URL': 'postgresql://postgres:MQoeIxVaCQMMyylyLodeYTyJeNrBVWKu@monorail.proxy.rlwy.net:18762/railway',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'MQoeIxVaCQMMyylyLodeYTyJeNrBVWKu',
+        'HOST': 'monorail.proxy.rlwy.net',
+        'PORT': 18762,
     }
 }
 
@@ -134,7 +146,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 STATICFILES_DIRS = [BASE_DIR, 'static']
 
 MEDIA_URL = '/media/'
@@ -160,12 +172,12 @@ STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# AUTHENTICATION_BACKENDS = [
-#     'django.contrib.auth.backends.ModelBackend',
-#     'allauth.account.auth_backends.AuthenticationBackend',
-# ]
-
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = False
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'kibestevie02@gmail.com'
+EMAIL_HOST_PASSWORD = 'bfjvnbwhlmxnvinv'
 
 AUTH_USER_MODEL = 'accounts.Account'
