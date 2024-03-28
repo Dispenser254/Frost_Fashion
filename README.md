@@ -113,8 +113,11 @@ $  pip install -r requirements.txt
 ```python
 ALLOWED_HOSTS = ['*']
 ```
-*No need to change on Mac.*
-
+Run to migrate database
+```python
+$ python manage.py makemigrations
+$ python manage.py makemigrations
+```
 
 **6. Now Run Server**
 
