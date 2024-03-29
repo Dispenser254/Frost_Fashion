@@ -9,9 +9,12 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-import os
+
 from pathlib import Path
 from django.contrib.messages import constants as messages
+import os
+import django_heroku
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,9 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-t*i*x4&ez$&!&u_xsnz9u&y3ql4$oex+3_bg-^ihgxz+f-z3@h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = [".herokuapp.com", 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -55,6 +58,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -100,13 +104,13 @@ WSGI_APPLICATION = 'Fashion.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'URL': 'postgresql://postgres:MQoeIxVaCQMMyylyLodeYTyJeNrBVWKu@monorail.proxy.rlwy.net:18762/railway',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'MQoeIxVaCQMMyylyLodeYTyJeNrBVWKu',
-        'HOST': 'monorail.proxy.rlwy.net',
-        'PORT': 18762,
+        'NAME': 'd3lob3a3fvi9d4',
+        'USER': 'ud9grd4pprte64',
+        'PASSWORD': 'p4ee2b0d89be30ee7cf155e5239b61f7d11e0568961b2885adb8f1e648b9564e8',
+        'HOST': 'c7gljno857ucsl.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com',
+        'PORT': 5432,
     }
 }
 
@@ -181,3 +185,5 @@ EMAIL_HOST_USER = 'kibestevie02@gmail.com'
 EMAIL_HOST_PASSWORD = 'bfjvnbwhlmxnvinv'
 
 AUTH_USER_MODEL = 'accounts.Account'
+
+django_heroku.settings(locals())
