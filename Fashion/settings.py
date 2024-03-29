@@ -13,8 +13,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 from django.contrib.messages import constants as messages
 import os
-import django_heroku
-import dj_database_url
+# import django_heroku
+# import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -58,7 +58,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -102,15 +102,20 @@ WSGI_APPLICATION = 'Fashion.wsgi.application'
 #     }
 # }
 
+# POSTGRES_LOCALLY = False
+
+# if ENVIRONMENT == 'production' or POSTGRES_LOCALLY == 'True':
+#     DATABASES['default'] = dj_database_url.parse(env())
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'URL': 'postgresql://postgres:MQoeIxVaCQMMyylyLodeYTyJeNrBVWKu@monorail.proxy.rlwy.net:18762/railway',
-        'NAME': 'd3lob3a3fvi9d4',
-        'USER': 'ud9grd4pprte64',
-        'PASSWORD': 'p4ee2b0d89be30ee7cf155e5239b61f7d11e0568961b2885adb8f1e648b9564e8',
-        'HOST': 'c7gljno857ucsl.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com',
-        'PORT': 5432,
+        'URL': 'postgresql://postgres:pXkOcsIOyoRRzLQBzIZOAMqXyqlDfMCW@monorail.proxy.rlwy.net:22807/railway',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'pXkOcsIOyoRRzLQBzIZOAMqXyqlDfMCW',
+        'HOST': 'monorail.proxy.rlwy.net',
+        'PORT': 22807,
     }
 }
 
@@ -186,4 +191,4 @@ EMAIL_HOST_PASSWORD = 'bfjvnbwhlmxnvinv'
 
 AUTH_USER_MODEL = 'accounts.Account'
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
